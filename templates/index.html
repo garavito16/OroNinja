@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Money</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="score">
+                <p>Your Gold:</p>
+                <input type="text" value="{{session['points']}}" disabled>
+            </div>
+            {% if session["game_over"] == 1: %}
+                <div class="div_restart">
+                    <form class="form_restart" class="form" action="/process_money" method="post">
+                        <input type="hidden" name="building" value="restart" />
+                        <input class="btn_restart" type="submit" value="Restart"/>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+        {% if session["game_over"] == 1: %}
+            <div>
+                <p class="message">{{session["message"]}}</p>
+            </div>
+        {% endif %}
+        <div class="boxes">
+            <div class="box">
+                <form class="form" action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="hidden" name="value_min" value="10" />
+                    <input type="hidden" name="value_max" value="20" />
+                    <input type="hidden" name="flag_take" value="0" />
+                    <h2 class="title">Farm</h2>
+                    <p class="form_text">(earns 10-20 golds)</p>
+                    {% if session["game_over"] == 0: %}
+                        <input class="btn_play" type="submit" value="Find Gold!"/>
+                        {% endif %}
+                </form>
+            </div>
+            <div class="box">
+                <form class="form" action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="hidden" name="value_min" value="5" />
+                    <input type="hidden" name="value_max" value="10" />
+                    <input type="hidden" name="flag_take" value="0" />
+                    <h2 class="title">Cave</h2>
+                    <p class="form_text">(earns 5-10 golds)</p>
+                    {% if session["game_over"] == 0: %}
+                        <input class="btn_play" type="submit" value="Find Gold!"/>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="box">
+                <form class="form" action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house" />
+                    <input type="hidden" name="value_min" value="2" />
+                    <input type="hidden" name="value_max" value="5" />
+                    <input type="hidden" name="flag_take" value="0" />
+                    <h2 class="title">House</h2>
+                    <p class="form_text">(earns 2-5 golds)</p>
+                    {% if session["game_over"] == 0: %}
+                        <input class="btn_play" type="submit" value="Find Gold!"/>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="box">
+                <form class="form" action="/process_money" method="post">
+                    <input type="hidden" name="building" value="casino" />
+                    <input type="hidden" name="value_min" value="0" />
+                    <input type="hidden" name="value_max" value="50" />
+                    <input type="hidden" name="flag_take" value="1" />
+                    <h2 class="title">Casino</h2>
+                    <p class="form_text">(earns/takes 0-50 golds)</p>
+                    {% if session["game_over"] == 0: %}
+                        <input class="btn_play" type="submit" value="Find Gold!"/>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="activities">
+            <p>Activities:</p>
+            <div class="div_activities">
+                {{session["activities"]|safe}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

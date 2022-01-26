@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 10em;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    border: 2px solid black;
+    background-color: rgb(116, 189, 6);
+    width: 12em;
+    height: 12em;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+}
+
+.score {
+    padding: 1.5em 0;
+    font-size: x-large;
+    flex: 1;
+}
+
+.div_restart {
+    margin: auto;
+}
+
+.score > * {
+    display: inline;
+}
+
+.score > input {
+    padding: 0.2em 0;
+    font-size: large;
+}
+
+.div_activities {
+    border: 2px solid black;
+    padding: 1.0em;
+    margin-top: 0.2em;
+    height: 15.0em;
+    overflow: scroll;
+}
+
+.activities {
+    margin-top: 2.0em;
+}
+
+.btn_play, .btn_restart {
+    background-color: rgb(41, 91, 228);
+    padding: 0.2em 0.5em;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    font-size: large;
+}
+
+.btn_restart {
+    background-color: orange;
+}
+
+.form_text {
+    font-size: large;
+}
+
+.form > *{
+    margin: 0.7em 0;
+}
+
+.text_green {
+    color: green;
+}
+
+.text_red {
+    color: red;
+}
+
+.text_gray {
+    color: gray;
+}
+
+.message {
+    font-size: x-large;
+    margin-bottom: 1.0em;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.5em 0;
+}
